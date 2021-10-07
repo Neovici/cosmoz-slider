@@ -39,7 +39,9 @@ jobs:
       run: npm run lint
 
     - name: Install playwright deps
-      run: npx playwright install-deps
+      run: |
+        npx playwright install-deps
+        npx playwright install
 
     - name: Test and report
       env:
