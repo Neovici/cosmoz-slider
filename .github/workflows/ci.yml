@@ -14,26 +14,19 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 0
 
     - name: Use Node.js 14.x
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2
       with:
         node-version: 14.x
-
-    - name: Restore npm cache
-      id: node-cache
-      uses: actions/cache@v2
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node-0-${{ hashFiles('**/package-lock.json') }}
+        cache: 'npm'
 
     - name: Install
-      if: steps.node-cache.outputs.cache-hit != 'true'
       run: npm ci
 
     - name: Lint commit messages
-      run: npx commitlint --from origin/master --to HEAD
+      uses: wagoid/commitlint-github-action@v3
 
     - name: ESLint
       run: npm run lint
