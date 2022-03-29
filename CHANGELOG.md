@@ -1,3 +1,20 @@
+## [2.0.0](https://github.com/Neovici/cosmoz-slider/compare/v1.1.0...v2.0.0) (2022-03-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **animations:** due to host styles change, some adjustments will be required
+
+### Features
+
+* **use-slider:** slide render function alongside content prop ([265a206](https://github.com/Neovici/cosmoz-slider/commit/265a2061cc36aa6bc5ebdb1bfe9f1992acf3ec30))
+
+
+### Bug Fixes
+
+* **animations:** stacking context is wrong ([922b147](https://github.com/Neovici/cosmoz-slider/commit/922b1476bf44de814bc0086ea6518e2a7c61e7d9))
+* **use-slide-list:** pass callbacks to render function ([54f5072](https://github.com/Neovici/cosmoz-slider/commit/54f5072caf6ddb54753c2d47823cb0823fc0fd54))
+
 ## [1.1.0](https://github.com/Neovici/cosmoz-slider/compare/v1.0.0...v1.1.0) (2021-12-06)
 
 
