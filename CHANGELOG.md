@@ -1,3 +1,11 @@
+### [2.0.1](https://github.com/Neovici/cosmoz-slider/compare/v2.0.0...v2.0.1) (2022-04-19)
+
+
+### Bug Fixes
+
+* **animations:** too slow ([082ef7a](https://github.com/Neovici/cosmoz-slider/commit/082ef7aca619f2fba16d25b710db69118fe3674b))
+* **use-slide-list:** does not re-render when render fn changes ([0b889cd](https://github.com/Neovici/cosmoz-slider/commit/0b889cd9362a35a21296617b334c81b8d5ac50f4))
+
 ## [2.0.0](https://github.com/Neovici/cosmoz-slider/compare/v1.1.0...v2.0.0) (2022-03-29)
 
 
