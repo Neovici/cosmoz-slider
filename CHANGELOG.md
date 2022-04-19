@@ -1,3 +1,11 @@
+## [2.1.0](https://github.com/Neovici/cosmoz-slider/compare/v2.0.1...v2.1.0) (2022-04-19)
+
+
+### Features
+
+* **use-slide-list:** goto fn for jumping to a certain index ([ae77dc0](https://github.com/Neovici/cosmoz-slider/commit/ae77dc022bb535a4546db368590dce4c814db899))
+* **use-slide-list:** param for initial value ([fa78e4d](https://github.com/Neovici/cosmoz-slider/commit/fa78e4d49b897e4485bb7aabf68965811fe4e6c2))
+
 ### [2.0.1](https://github.com/Neovici/cosmoz-slider/compare/v2.0.0...v2.0.1) (2022-04-19)
 
 
