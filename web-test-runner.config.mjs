@@ -1,11 +1,6 @@
-import { playwrightLauncher } from '@web/test-runner-playwright';
+import cfg from '@neovici/cfg/web/test-runner.mjs';
 
 export default {
-	nodeResolve: true,
-	files: 'test/**/*.test.js',
-	browsers: [
-		playwrightLauncher({ product: 'chromium' }),
-		playwrightLauncher({ product: 'webkit' }),
-		playwrightLauncher({ product: 'firefox' })
-	]
+	...cfg,
+	testFramework: { config: { ui: 'bdd' }},
 };
