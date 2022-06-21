@@ -1,3 +1,14 @@
+## [3.0.0-beta.1](https://github.com/Neovici/cosmoz-slider/compare/v2.1.0...v3.0.0-beta.1) (2022-06-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* Upgrade to lit2
+
+### Features
+
+* upgrade to lit2 ([128687c](https://github.com/Neovici/cosmoz-slider/commit/128687c2203b4e84c69f8cee3c77b523b6cdecd3))
+
 ## [2.1.0](https://github.com/Neovici/cosmoz-slider/compare/v2.0.1...v2.1.0) (2022-04-19)
 
 

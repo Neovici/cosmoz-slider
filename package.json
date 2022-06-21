@@ -1,6 +1,6 @@
 {
 	"name": "@neovici/cosmoz-slider",
-	"version": "2.1.0",
+	"version": "3.0.0-beta.1",
 	"description": "General purpose slider",
 	"main": "index.js",
 	"repository": {
@@ -42,7 +42,10 @@
 	"commitlint": {
 		"extends": [
 			"@commitlint/config-conventional"
-		]
+		],
+		"rules": {
+			"body-max-line-length": [1, "always", 100]
+		}
 	},
 	"publishConfig": {
 		"access": "public"
@@ -52,15 +55,15 @@
 		"lib/**/*.js"
 	],
 	"dependencies": {
-		"@neovici/cosmoz-utils": "^3.28.0",
-		"haunted": "^4.8.2",
-		"lit-html": "^1.4.1"
+		"@neovici/cosmoz-utils": "^4.0.0",
+		"haunted": "^5.0.0",
+		"lit-html": "^2.0.0"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^17.0.0",
 		"@commitlint/config-conventional": "^17.0.0",
 		"@neovici/cfg": "^1.15.2",
-		"@open-wc/testing": "^2.5.33",
+		"@open-wc/testing": "^3.0.0",
 		"@semantic-release/changelog": "^6.0.0",
 		"@semantic-release/git": "^10.0.0",
 		"@storybook/storybook-deployer": "^2.8.10",
