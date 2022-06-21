@@ -52,7 +52,7 @@
 		"lib/**/*.js"
 	],
 	"dependencies": {
-		"@neovici/cosmoz-utils": "^4.0.0-beta.2",
+		"@neovici/cosmoz-utils": "^4.0.0",
 		"haunted": "^5.0.0",
 		"lit-html": "^2.0.0"
 	},
