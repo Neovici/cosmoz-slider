@@ -1,3 +1,14 @@
+## [4.0.0](https://github.com/Neovici/cosmoz-slider/compare/v3.0.0...v4.0.0) (2022-07-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** Upgrade to cosmoz-utils@5.
+
+### Features
+
+* **deps:** upgrade to cosmoz-utils@5 ([3d83035](https://github.com/Neovici/cosmoz-slider/commit/3d83035d7201601e3544a5fcea372a1cc2ff7284))
+
 ## [3.0.0](https://github.com/Neovici/cosmoz-slider/compare/v2.1.0...v3.0.0) (2022-06-21)
 
 
