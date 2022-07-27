@@ -1,3 +1,10 @@
+## [4.1.0](https://github.com/Neovici/cosmoz-slider/compare/v4.0.0...v4.1.0) (2022-07-27)
+
+
+### Features
+
+* convert to typescript ([5609fea](https://github.com/Neovici/cosmoz-slider/commit/5609feab1d0cdf672428d8a635f32892e1c90a79))
+
 ## [4.0.0](https://github.com/Neovici/cosmoz-slider/compare/v3.0.0...v4.0.0) (2022-07-19)
 
 
