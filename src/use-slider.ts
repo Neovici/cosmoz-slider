@@ -1,9 +1,23 @@
 import { html, useEffect, useLayoutEffect, useState } from 'haunted';
+import { TemplateResult } from 'lit-html';
 import { repeat } from 'lit-html/directives/repeat.js';
 import { ref } from 'lit-html/directives/ref.js';
 import { styleMap } from 'lit-html/directives/style-map.js';
 import { guard } from 'lit-html/directives/guard.js';
 import { ManagedPromise } from '@neovici/cosmoz-utils/promise';
+
+export interface Slide {
+	id: unknown;
+	content?: TemplateResult<1>;
+	render?: (slide: Slide) => void;
+	animation?: (inEl: HTMLElement, outEl: HTMLElement) => void;
+}
+
+interface RSlide extends Slide {
+	out?: boolean;
+	animationEnd$: Promise<undefined>;
+	el?: HTMLElement;
+}
 
 export const styles = {
 		host: { position: 'relative', display: 'block', overflow: 'hidden' },
@@ -13,20 +27,24 @@ export const styles = {
 			height: '100%',
 		},
 	},
-	useSlider = (host) => {
+	useSlider = <T extends HTMLElement & { slide: Slide }>(host: T) => {
 		const { slide } = host,
-			[slides, setSlides] = useState([]);
+			[slides, setSlides] = useState([] as RSlide[]);
 
-		useLayoutEffect(() => Object.assign(host.style, styles.host), []);
+		// eslint-disable-next-line no-void
+		useLayoutEffect(() => void Object.assign(host.style, styles.host), []);
 
 		useEffect(() => {
 			if (slide == null) {
 				return;
 			}
 
-			const _slide = { animationEnd$: new ManagedPromise(), ...slide };
+			const _slide = {
+				animationEnd$: new ManagedPromise(),
+				...slide,
+			} as RSlide;
 
-			setSlides((slides) => {
+			setSlides((slides = []) => {
 				const idx = slides.findIndex(
 					({ id, out }) => id === _slide.id && out !== true
 				);
@@ -43,12 +61,14 @@ export const styles = {
 			});
 		}, [slide]);
 
-		// @ts-ignore
 		useLayoutEffect(async () => {
 			if (slides.filter((slide) => !slide.out).length < 2) {
-				slides[0] &&
+				const slide = slides[0];
+				slide &&
 					requestAnimationFrame(() =>
-						requestAnimationFrame(slides[0].animationEnd$.resolve)
+						requestAnimationFrame(() =>
+							(slide.animationEnd$ as ManagedPromise<undefined>).resolve()
+						)
 					);
 				return;
 			}
@@ -59,21 +79,22 @@ export const styles = {
 				outEl = outSlide.el;
 
 			outSlide.out = true;
+			if (inEl && outEl) {
+				await inSlide.animation?.(inEl, outEl);
+			}
 
-			await inSlide.animation?.(inEl, outEl);
-
-			setSlides((slides) => slides.filter((slide) => slide !== outSlide));
+			setSlides((slides = []) => slides.filter((slide) => slide !== outSlide));
 		}, [slides]);
 
 		return { slides };
 	},
-	renderSlide = (slide) =>
+	renderSlide = (slide: Slide) =>
 		html`<div
 			${ref((el) => Object.assign(slide, { el }))}
 			class="slide"
 			style=${styleMap(styles.slide)}
 		>
-			${slide.content ?? slide.render(slide)}
+			${slide.content ?? slide.render?.(slide)}
 		</div>`,
-	renderSlider = ({ slides }) =>
+	renderSlider = ({ slides }: { slides: Slide[] }) =>
 		guard([slides], () => repeat(slides, ({ id }) => id, renderSlide));

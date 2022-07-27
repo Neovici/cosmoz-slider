@@ -1,6 +1,5 @@
 import { component, html, useState } from 'haunted';
-import { slideInLeft, slideInRight } from '../lib/animations';
-import '../cosmoz-slider';
+import { slideInLeft, slideInRight } from '../src/';
 
 const
 	tabs = {

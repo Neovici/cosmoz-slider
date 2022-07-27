@@ -1,7 +1,8 @@
-import { useSlideList } from '../lib/use-slide-list';
 import { component } from 'haunted';
 import { expect, html, fixture, nextFrame } from '@open-wc/testing';
 import { nothing } from 'lit-html';
+import { useSlideList } from '../src/use-slide-list';
+
 
 customElements.define(
 	'use-slide-list',
