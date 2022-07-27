@@ -1,6 +1,5 @@
 import { component, html, useState } from 'haunted';
-import { useSlideList } from '../lib/use-slide-list';
-import '../cosmoz-slider';
+import { useSlideList } from '../src/';
 
 const
 	renderSlide = item => html`

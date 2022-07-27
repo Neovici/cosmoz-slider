@@ -1,6 +1,5 @@
-import '../cosmoz-slider';
 import { expect, fixture, html, nextFrame, aTimeout } from '@open-wc/testing';
-import { dropTop, slideInLeft, slideInRight } from '../lib/animations';
+import { dropTop, slideInLeft, slideInRight } from '../src';
 
 const expectSlide = (el, content) => expect(el).dom.to.equal(`<cosmoz-slider>${ content }</cosmoz-slider>`, { ignoreAttributes: ['style', 'class']});
 

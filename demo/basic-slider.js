@@ -1,6 +1,5 @@
 import { component, html, useState } from 'haunted';
-import { slideInRight } from '../lib/animations';
-import '../cosmoz-slider';
+import { slideInRight } from '../src/';
 
 const
 	randValue = () => Math.trunc(Math.random() * 256),
