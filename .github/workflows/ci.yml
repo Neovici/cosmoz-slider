@@ -33,6 +33,9 @@ jobs:
     - name: ESLint
       run: npm run lint
 
+    - name: Build
+      run: npm run build
+
     - name: Install playwright deps
       run: |
         npx playwright install-deps
