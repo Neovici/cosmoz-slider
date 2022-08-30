@@ -1,3 +1,10 @@
+## [4.1.1](https://github.com/Neovici/cosmoz-slider/compare/v4.1.0...v4.1.1) (2022-08-30)
+
+
+### Bug Fixes
+
+* build release ([dfc11de](https://github.com/Neovici/cosmoz-slider/commit/dfc11de655fb6a63111409681c697f8a68a7b791))
+
 ## [4.1.0](https://github.com/Neovici/cosmoz-slider/compare/v4.0.0...v4.1.0) (2022-07-27)
 
 
