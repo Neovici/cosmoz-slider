@@ -27,7 +27,7 @@ export interface RenderOpts {
 }
 interface UseSlideList<T> {
 	initial: T;
-	id: <V>(i: T) => V | T;
+	id: (i: T) => unknown;
 	render: (i: T, o: RenderOpts) => TemplateResult<1>;
 }
 
