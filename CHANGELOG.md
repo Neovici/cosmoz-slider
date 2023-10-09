@@ -1,3 +1,10 @@
+## [4.2.0](https://github.com/Neovici/cosmoz-slider/compare/v4.1.1...v4.2.0) (2023-10-09)
+
+
+### Features
+
+* **use-slide-list:** adjust id return type ([4de4123](https://github.com/Neovici/cosmoz-slider/commit/4de4123e5ce92441ddabb38936cb45b9382eb932))
+
 ## [4.1.1](https://github.com/Neovici/cosmoz-slider/compare/v4.1.0...v4.1.1) (2022-08-30)
 
 
