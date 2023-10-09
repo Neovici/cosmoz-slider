@@ -18,7 +18,7 @@ const useLastValue = <T>(value: T) => {
 	});
 
 type Fn = () => void;
-interface Render {
+export interface RenderOpts {
 	next: Fn;
 	prev: Fn;
 	goto: (i: number) => void;
@@ -28,23 +28,23 @@ interface Render {
 interface UseSlideList<T> {
 	initial: T;
 	id: <V>(i: T) => V | T;
-	render: (i: T, o: Render) => TemplateResult<1>;
+	render: (i: T, o: RenderOpts) => TemplateResult<1>;
 }
 
 export const useSlideList = <T>(
 	items: T[],
-	{ initial, render, id = identity }: UseSlideList<T>
+	{ initial, render, id = identity }: UseSlideList<T>,
 ) => {
 	const [item, setItem] = useState(() => initial ?? items[0]),
 		index = useMemo(() => items.indexOf(item), [items, item]),
 		prevIndex = useLastValue(index),
 		prev = useCallback(
 			() => setItem(items[Math.max(0, Math.min(items.length - 1, index - 1))]),
-			[items, index]
+			[items, index],
 		),
 		next = useCallback(
 			() => setItem(items[Math.max(0, Math.min(items.length - 1, index + 1))]),
-			[items, index]
+			[items, index],
 		),
 		goto = useCallback((index: number) => setItem(items[index]), [items]),
 		first = index <= 0,
@@ -58,25 +58,22 @@ export const useSlideList = <T>(
 					? items[0]
 					: items.indexOf(item) >= 0
 					? item
-					: find(items, item, id)
+					: find(items, item, id),
 			),
-		[items]
+		[items],
 	);
 
 	return {
 		index,
 		item,
-		slide: useMemo(
-			() =>
-				item
-					? {
-							id: id(item),
-							content: render(item, { next, prev, goto, first, last }),
-							animation: index > (prevIndex ?? -1) ? slideInRight : slideInLeft,
-					  }
-					: emptySlide(),
-			[item, render]
-		),
+		slide: useMemo(() => {
+			if (item == null) return emptySlide();
+			return {
+				id: id(item),
+				content: render(item, { next, prev, goto, first, last }),
+				animation: index > (prevIndex ?? -1) ? slideInRight : slideInLeft,
+			};
+		}, [item, render]),
 		prev,
 		next,
 		goto,
