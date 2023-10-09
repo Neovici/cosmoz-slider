@@ -6,5 +6,5 @@ const Slider = <T extends HTMLElement & { slide: Slide }>(host: T) =>
 
 customElements.define(
 	'cosmoz-slider',
-	component(Slider, { useShadowDOM: false })
+	component(Slider, { useShadowDOM: false }),
 );

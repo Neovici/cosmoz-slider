@@ -13,88 +13,93 @@ export interface Slide {
 	animation?: (inEl: HTMLElement, outEl: HTMLElement) => void;
 }
 
-interface RSlide extends Slide {
+interface SlideRef extends Slide {
 	out?: boolean;
 	animationEnd$: Promise<undefined>;
 	el?: HTMLElement;
 }
 
 export const styles = {
-		host: { position: 'relative', display: 'block', overflow: 'hidden' },
-		slide: {
-			position: 'static',
-			width: '100%',
-			height: '100%',
-		},
+	host: { position: 'relative', display: 'block', overflow: 'hidden' },
+	slide: {
+		position: 'static',
+		width: '100%',
+		height: '100%',
 	},
-	useSlider = <T extends HTMLElement & { slide: Slide }>(host: T) => {
-		const { slide } = host,
-			[slides, setSlides] = useState([] as RSlide[]);
+};
 
-		// eslint-disable-next-line no-void
-		useLayoutEffect(() => void Object.assign(host.style, styles.host), []);
+export const useSlider = <T extends HTMLElement & { slide: Slide }>(
+	host: T,
+) => {
+	const { slide } = host,
+		[slides, setSlides] = useState([] as SlideRef[]);
 
-		useEffect(() => {
-			if (slide == null) {
-				return;
+	// eslint-disable-next-line no-void
+	useLayoutEffect(() => void Object.assign(host.style, styles.host), []);
+
+	useEffect(() => {
+		if (slide == null) {
+			return;
+		}
+
+		const _slide = {
+			animationEnd$: new ManagedPromise(),
+			...slide,
+		} as SlideRef;
+
+		setSlides((slides = []) => {
+			const idx = slides.findIndex(
+				({ id, out }) => id === _slide.id && out !== true,
+			);
+
+			if (idx !== -1) {
+				return [
+					...slides.slice(0, idx),
+					_slide,
+					...slides.slice(idx + 1, slides.length),
+				];
 			}
 
-			const _slide = {
-				animationEnd$: new ManagedPromise(),
-				...slide,
-			} as RSlide;
+			return [...slides, _slide];
+		});
+	}, [slide]);
 
-			setSlides((slides = []) => {
-				const idx = slides.findIndex(
-					({ id, out }) => id === _slide.id && out !== true
-				);
-
-				if (idx !== -1) {
-					return [
-						...slides.slice(0, idx),
-						_slide,
-						...slides.slice(idx + 1, slides.length),
-					];
-				}
-
-				return [...slides, _slide];
-			});
-		}, [slide]);
-
-		useLayoutEffect(async () => {
-			if (slides.filter((slide) => !slide.out).length < 2) {
-				const slide = slides[0];
-				slide &&
+	useLayoutEffect(async () => {
+		if (slides.filter((slide) => !slide.out).length < 2) {
+			const slide = slides[0];
+			slide &&
+				requestAnimationFrame(() =>
 					requestAnimationFrame(() =>
-						requestAnimationFrame(() =>
-							(slide.animationEnd$ as ManagedPromise<undefined>).resolve()
-						)
-					);
-				return;
-			}
+						(slide.animationEnd$ as ManagedPromise<undefined>).resolve(),
+					),
+				);
+			return;
+		}
 
-			const inSlide = slides[slides.length - 1],
-				outSlide = slides[slides.length - 2],
-				inEl = inSlide.el,
-				outEl = outSlide.el;
+		const inSlide = slides[slides.length - 1],
+			outSlide = slides[slides.length - 2],
+			inEl = inSlide.el,
+			outEl = outSlide.el;
 
-			outSlide.out = true;
-			if (inEl && outEl) {
-				await inSlide.animation?.(inEl, outEl);
-			}
+		outSlide.out = true;
+		if (inEl && outEl) {
+			await inSlide.animation?.(inEl, outEl);
+		}
 
-			setSlides((slides = []) => slides.filter((slide) => slide !== outSlide));
-		}, [slides]);
+		setSlides((slides = []) => slides.filter((slide) => slide !== outSlide));
+	}, [slides]);
 
-		return { slides };
-	},
-	renderSlide = (slide: Slide) =>
-		html`<div
-			${ref((el) => Object.assign(slide, { el }))}
-			class="slide"
-			style=${styleMap(styles.slide)}
-		>
-			${slide.content ?? slide.render?.(slide)}
-		</div>`,
-	renderSlider = ({ slides }: { slides: Slide[] }) =>
-		guard([slides], () => repeat(slides, ({ id }) => id, renderSlide));
+	return { slides };
+};
+
+export const renderSlide = (slide: Slide) =>
+	html`<div
+		${ref((el) => Object.assign(slide, { el }))}
+		class="slide"
+		style=${styleMap(styles.slide)}
+	>
+		${slide.content ?? slide.render?.(slide)}
+	</div>`;
+
+export const renderSlider = ({ slides }: { slides: Slide[] }) =>
+	guard([slides], () => repeat(slides, ({ id }) => id, renderSlide));
