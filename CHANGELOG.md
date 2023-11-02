@@ -1,3 +1,10 @@
+## [4.3.0](https://github.com/Neovici/cosmoz-slider/compare/v4.2.0...v4.3.0) (2023-11-02)
+
+
+### Features
+
+* update deps and workflows ([330c377](https://github.com/Neovici/cosmoz-slider/commit/330c3770a511eefe6587d7e125bb04d65f3e811b))
+
 ## [4.2.0](https://github.com/Neovici/cosmoz-slider/compare/v4.1.1...v4.2.0) (2023-10-09)
 
 
