@@ -68,16 +68,17 @@
 	"dependencies": {
 		"@neovici/cosmoz-utils": "^5.0.0",
 		"haunted": "^5.0.0",
-		"lit-html": "^2.0.0"
+		"lit-html": "^2.0.0 || ^3.0.0"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^17.0.0",
-		"@commitlint/config-conventional": "^17.0.0",
+		"@commitlint/cli": "^18.0.0",
+		"@commitlint/config-conventional": "^18.0.0",
 		"@neovici/cfg": "^1.15.2",
 		"@open-wc/testing": "^3.0.0",
 		"@semantic-release/changelog": "^6.0.0",
 		"@semantic-release/git": "^10.0.0",
 		"@storybook/storybook-deployer": "^2.8.10",
+		"@types/mocha": "^10.0.3",
 		"@web/dev-server-storybook": "^1.0.0",
 		"semantic-release": "^22.0.0",
 		"typescript": "^5.0.0"
