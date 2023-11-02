@@ -1,10 +1,9 @@
 import { component, html, useState } from 'haunted';
-import { slideInRight } from '../src/';
+import { slideInRight } from '../src/animations';
 
-const
-	randValue = () => Math.trunc(Math.random() * 256),
-	randColor = () => `rgb(${ randValue() }, ${ randValue() }, ${ randValue() })`,
-	newSlide = id => ({
+const randValue = () => Math.trunc(Math.random() * 256),
+	randColor = () => `rgb(${randValue()}, ${randValue()}, ${randValue()})`,
+	newSlide = (id) => ({
 		id,
 		content: html`
 			<style>
@@ -20,20 +19,23 @@ const
 					user-select: none;
 				}
 			</style>
-			<div style="background-color: ${ randColor() }">
+			<div style="background-color: ${randColor()}">
 				<div>Click me!</div>
 			</div>
 		`,
-		animation: slideInRight
+		animation: slideInRight,
 	}),
 	DemoBasicSlider = () => {
-		const
-			[slide, setSlide] = useState(newSlide(1)),
-			slideNow = () => setSlide(slide => newSlide(slide.id + 1));
+		const [slide, setSlide] = useState(newSlide(1)),
+			slideNow = () => setSlide((slide) => newSlide(slide.id + 1));
 		return html`
-		<style>cosmoz-slider{height: 80vh}</style>
-		<cosmoz-slider .slide=${ slide } @click=${ slideNow }></cosmoz-slider>
-	`;
+			<style>
+				cosmoz-slider {
+					height: 80vh;
+				}
+			</style>
+			<cosmoz-slider .slide=${slide} @click=${slideNow}></cosmoz-slider>
+		`;
 	};
 
 customElements.define('demo-basic-slider', component(DemoBasicSlider));
