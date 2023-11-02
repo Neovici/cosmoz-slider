@@ -1,5 +1,5 @@
 import { component, html, useState } from 'haunted';
-import { slideInLeft, slideInRight } from '../src/animations';
+import { slideInLeft, slideInRight } from '../src';
 
 const tabs = {
 		about: html`<h1>About</h1>

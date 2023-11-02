@@ -1,5 +1,5 @@
 import { component, html, useState } from 'haunted';
-import { useSlideList } from '../src/use-slide-list';
+import { useSlideList } from '../src';
 
 const renderSlide = (item) => html`
 		<h1>my slide ${item.id}</h1>

@@ -1,5 +1,5 @@
 import { component, html, useState } from 'haunted';
-import { slideInRight } from '../src/animations';
+import { slideInRight } from '../src';
 
 const randValue = () => Math.trunc(Math.random() * 256),
 	randColor = () => `rgb(${randValue()}, ${randValue()}, ${randValue()})`,
