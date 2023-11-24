@@ -92,13 +92,13 @@ export const useSlider = <T extends HTMLElement & { slide: Slide }>(
 	return { slides };
 };
 
-export const renderSlide = (slide: Slide) =>
+export const renderSlide = (slide: Slide): unknown =>
 	html`<div
 		${ref((el) => Object.assign(slide, { el }))}
 		class="slide"
 		style=${styleMap(styles.slide)}
 	>
-		${slide.content ?? slide.render?.(slide)}
+		${guard([slide], () => slide.content ?? slide.render?.(slide))}
 	</div>`;
 
 export const renderSlider = ({ slides }: { slides: Slide[] }) =>
