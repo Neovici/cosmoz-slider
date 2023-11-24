@@ -1,3 +1,10 @@
+## [4.4.0](https://github.com/Neovici/cosmoz-slider/compare/v4.3.0...v4.4.0) (2023-11-24)
+
+
+### Features
+
+* **use-slider:** memoize slide rendering ([6247286](https://github.com/Neovici/cosmoz-slider/commit/624728607d9ad7378aac5023fd3040ea3f194c19))
+
 ## [4.3.0](https://github.com/Neovici/cosmoz-slider/compare/v4.2.0...v4.3.0) (2023-11-02)
 
 
