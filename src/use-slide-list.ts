@@ -30,32 +30,46 @@ interface UseSlideList<T> {
 	initial: T;
 	id: (i: T) => unknown;
 	render: (i: T, o: RenderOpts) => TemplateResult<1>;
+	loop?: boolean;
 }
 
 export const useSlideList = <T>(
 	items: T[],
-	{ initial, render, id = identity }: UseSlideList<T>,
+	{ initial, render, id = identity, loop }: UseSlideList<T>,
 ) => {
 	const [item, setItem] = useState(() => initial ?? items[0]),
 		index = useMemo(() => items.indexOf(item), [items, item]),
 		prevIndex = useLastValue(index),
 		prev = useCallback(
 			() =>
-				setItem(
-					() => items[Math.max(0, Math.min(items.length - 1, index - 1))],
+				setItem(() =>
+					loop
+						? items[(index - 1 + items.length) % items.length]
+						: items[Math.max(0, Math.min(items.length - 1, index - 1))],
 				),
-			[items, index],
+			[items, index, loop],
 		),
 		next = useCallback(
 			() =>
-				setItem(
-					() => items[Math.max(0, Math.min(items.length - 1, index + 1))],
+				setItem(() =>
+					loop
+						? items[(index + 1) % items.length]
+						: items[Math.max(0, Math.min(items.length - 1, index + 1))],
 				),
-			[items, index],
+			[items, index, loop],
 		),
 		goto = useCallback((index: number) => setItem(() => items[index]), [items]),
-		first = index <= 0,
-		last = index === items.length - 1;
+		first = loop ? false : index <= 0,
+		last = loop ? false : index === items.length - 1,
+		animation =
+			// eslint-disable-next-line no-nested-ternary
+			index > (prevIndex ?? -1)
+				? loop && index === items.length - 1 && prevIndex === 0
+					? slideInLeft
+					: slideInRight
+				: loop && index === 0 && prevIndex === items.length - 1
+				? slideInRight
+				: slideInLeft;
 
 	useEffect(
 		() =>
@@ -79,7 +93,7 @@ export const useSlideList = <T>(
 				id: id(item),
 				render: (slide: SlideRef) =>
 					render(item, { next, prev, goto, first, last, ...slide }),
-				animation: index > (prevIndex ?? -1) ? slideInRight : slideInLeft,
+				animation,
 			};
 		}, [item, render]),
 		prev,
