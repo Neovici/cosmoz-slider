@@ -24,7 +24,7 @@ describe('use-slide-list', () => {
 			item: undefined,
 			last: true
 		});
-		expect(result.current.slide).to.include({ content: nothing });
+		expect(result.current.slide.render).to.be.undefined;
 	});
 
 	it('iterates over the list', async () => {
@@ -39,7 +39,7 @@ describe('use-slide-list', () => {
 			item: items[0],
 			last: false
 		});
-		expect(result.current.slide).to.include({ content: 1 });
+		expect(result.current.slide.render()).to.equal(1);
 
 		result.current.next();
 		await nextFrame();
@@ -50,7 +50,7 @@ describe('use-slide-list', () => {
 			item: items[1],
 			last: true
 		});
-		expect(result.current.slide).to.include({ content: 2 });
+		expect(result.current.slide.render()).to.equal(2);
 
 		result.current.next();
 		await nextFrame();
@@ -61,6 +61,6 @@ describe('use-slide-list', () => {
 			item: items[1],
 			last: true
 		});
-		expect(result.current.slide).to.include({ content: 2 });
+		expect(result.current.slide.render()).to.equal(2);
 	});
 });
