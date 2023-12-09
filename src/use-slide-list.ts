@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'haunted';
 import { nothing, TemplateResult } from 'lit-html';
 import { slideInRight, slideInLeft } from './animations';
+import { SlideRef } from './use-slider';
 
 const useLastValue = <T>(value: T) => {
 		const lastValue = useRef<T | undefined>(undefined);
@@ -76,7 +77,8 @@ export const useSlideList = <T>(
 			if (item == null) return emptySlide();
 			return {
 				id: id(item),
-				content: render(item, { next, prev, goto, first, last }),
+				render: (slide: SlideRef) =>
+					render(item, { next, prev, goto, first, last, ...slide }),
 				animation: index > (prevIndex ?? -1) ? slideInRight : slideInLeft,
 			};
 		}, [item, render]),

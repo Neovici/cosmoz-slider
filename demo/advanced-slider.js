@@ -1,16 +1,24 @@
 import { component, html, useState } from 'haunted';
 import { useSlideList } from '../src';
+import { guard } from 'lit-html/directives/guard.js';
+import { until } from 'lit-html/directives/until.js';
 
-const renderSlide = (item) => html`
-		<h1>my slide ${item.id}</h1>
-		<p>${Math.random()}</p>
-		<img
-			src="${item.pic}"
-			width="1200"
-			height="300"
-			style="background:gray;width:100%; height: auto;"
-		/>
-	`,
+const renderSlide = (item, { animationEnd$ }) => [
+		html`<h1>my slide ${item.id}</h1>
+			<p>${Math.random()}</p>
+			<img
+				src="${item.pic}"
+				width="1200"
+				height="300"
+				style="background:gray;width:100%; height: auto;"
+			/> `,
+		guard(animationEnd$, () =>
+			until(
+				animationEnd$.then(() => html`<p>Animation done</p>`),
+				html`<p>Animating...</p>`,
+			),
+		),
+	],
 	initItems = [
 		{ id: 1, pic: 'https://picsum.photos/1200/300?random=1' },
 		{ id: 2, pic: 'https://picsum.photos/1200/300?random=2' },
@@ -55,6 +63,7 @@ const renderSlide = (item) => html`
 					width: 90vw;
 					height: 500px;
 					background: lightgray;
+					text-wrap: nowrap;
 				}
 			</style>
 
