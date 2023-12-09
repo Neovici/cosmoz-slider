@@ -39,14 +39,20 @@ export const useSlideList = <T>(
 		index = useMemo(() => items.indexOf(item), [items, item]),
 		prevIndex = useLastValue(index),
 		prev = useCallback(
-			() => setItem(items[Math.max(0, Math.min(items.length - 1, index - 1))]),
+			() =>
+				setItem(
+					() => items[Math.max(0, Math.min(items.length - 1, index - 1))],
+				),
 			[items, index],
 		),
 		next = useCallback(
-			() => setItem(items[Math.max(0, Math.min(items.length - 1, index + 1))]),
+			() =>
+				setItem(
+					() => items[Math.max(0, Math.min(items.length - 1, index + 1))],
+				),
 			[items, index],
 		),
-		goto = useCallback((index: number) => setItem(items[index]), [items]),
+		goto = useCallback((index: number) => setItem(() => items[index]), [items]),
 		first = index <= 0,
 		last = index === items.length - 1;
 
