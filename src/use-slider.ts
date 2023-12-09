@@ -13,7 +13,7 @@ export interface Slide {
 	animation?: (inEl: HTMLElement, outEl: HTMLElement) => void;
 }
 
-interface SlideRef extends Slide {
+export interface SlideRef extends Slide {
 	out?: boolean;
 	animationEnd$: Promise<undefined>;
 	el?: HTMLElement;
