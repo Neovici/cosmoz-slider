@@ -25,9 +25,10 @@ const renderSlide = (item, { animationEnd$ }) => [
 		{ id: 3, pic: 'https://picsum.photos/1200/300?random=3' },
 		{ id: 4, pic: 'https://picsum.photos/1200/300?random=4' },
 	],
-	DemoAdvancedSlider = () => {
+	DemoAdvancedSlider = ({ loop }) => {
 		const [items, setItems] = useState(initItems),
 			{ index, slide, prev, next, first, last } = useSlideList(items, {
+				loop,
 				render: renderSlide,
 				id: (a) => a?.id,
 			}),
@@ -79,4 +80,7 @@ const renderSlide = (item, { animationEnd$ }) => [
 		`;
 	};
 
-customElements.define('demo-advanced-slider', component(DemoAdvancedSlider));
+customElements.define(
+	'demo-advanced-slider',
+	component(DemoAdvancedSlider, { observedAttributes: ['loop'] }),
+);
