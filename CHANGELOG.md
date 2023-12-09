@@ -1,3 +1,10 @@
+## [4.4.1](https://github.com/Neovici/cosmoz-slider/compare/v4.4.0...v4.4.1) (2023-12-09)
+
+
+### Bug Fixes
+
+* **use-slide-list:** items cannot be functions ([ade9315](https://github.com/Neovici/cosmoz-slider/commit/ade9315cf171f4af332cff50de37c8ae8f8db9e7))
+
 ## [4.4.0](https://github.com/Neovici/cosmoz-slider/compare/v4.3.0...v4.4.0) (2023-11-24)
 
 
