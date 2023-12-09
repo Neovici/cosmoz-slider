@@ -20,7 +20,7 @@ interface SlideRef extends Slide {
 }
 
 export const styles = {
-	host: { position: 'relative', display: 'block', overflow: 'hidden' },
+	host: { position: 'relative', display: 'flex', overflow: 'hidden' },
 	slide: {
 		position: 'static',
 		width: '100%',
