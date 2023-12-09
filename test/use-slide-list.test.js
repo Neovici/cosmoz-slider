@@ -1,43 +1,41 @@
 import { component } from 'haunted';
 import { expect, html, fixture, nextFrame } from '@open-wc/testing';
-import { nothing } from 'lit-html';
 import { useSlideList } from '../src/use-slide-list';
-
 
 customElements.define(
 	'use-slide-list',
-	component(host => {
+	component((host) => {
 		const { items, render } = host;
 		host.current = useSlideList(items, { render });
-	})
+	}),
 );
 
 describe('use-slide-list', () => {
 	it('works with an empty array', async () => {
-		const
-			items = [],
-			result = await fixture(html`<use-slide-list .items=${ items } />`);
+		const items = [],
+			result = await fixture(html`<use-slide-list .items=${items} />`);
 
 		expect(result.current).to.include({
 			first: true,
 			index: -1,
 			item: undefined,
-			last: true
+			last: true,
 		});
 		expect(result.current.slide.render).to.be.undefined;
 	});
 
 	it('iterates over the list', async () => {
-		const
-			items = [{ x: 1 }, { x: 2 }],
+		const items = [{ x: 1 }, { x: 2 }],
 			render = ({ x }) => x,
-			result = await fixture(html`<use-slide-list .items=${ items } .render=${ render } />`);
+			result = await fixture(
+				html`<use-slide-list .items=${items} .render=${render} />`,
+			);
 
 		expect(result.current).to.include({
 			first: true,
 			index: 0,
 			item: items[0],
-			last: false
+			last: false,
 		});
 		expect(result.current.slide.render()).to.equal(1);
 
@@ -48,7 +46,7 @@ describe('use-slide-list', () => {
 			first: false,
 			index: 1,
 			item: items[1],
-			last: true
+			last: true,
 		});
 		expect(result.current.slide.render()).to.equal(2);
 
@@ -59,7 +57,7 @@ describe('use-slide-list', () => {
 			first: false,
 			index: 1,
 			item: items[1],
-			last: true
+			last: true,
 		});
 		expect(result.current.slide.render()).to.equal(2);
 	});
