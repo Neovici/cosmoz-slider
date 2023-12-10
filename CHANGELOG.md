@@ -1,3 +1,16 @@
+## [4.5.0](https://github.com/Neovici/cosmoz-slider/compare/v4.4.1...v4.5.0) (2023-12-10)
+
+
+### Features
+
+* **use-slide-list:** loop ([c2f8328](https://github.com/Neovici/cosmoz-slider/commit/c2f832812a1a417a804bcc08a9e722ea59f5cf8d))
+
+
+### Bug Fixes
+
+* next slide is wrapped for part of the animation ([8f61e73](https://github.com/Neovici/cosmoz-slider/commit/8f61e737a7d4ff1c2e5fc418a1dd6836d5fd3397))
+* **use-slide-list:** make animationEnd$ available in the render function ([cc5e5c1](https://github.com/Neovici/cosmoz-slider/commit/cc5e5c182ba91681b45013367ef5cda0f71ca490))
+
 ## [4.4.1](https://github.com/Neovici/cosmoz-slider/compare/v4.4.0...v4.4.1) (2023-12-09)
 
 
