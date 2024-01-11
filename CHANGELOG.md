@@ -1,3 +1,14 @@
+## [5.0.0](https://github.com/Neovici/cosmoz-slider/compare/v4.5.0...v5.0.0) (2024-01-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update to @pionjs/pion
+
+### Features
+
+* update to pion ([d334273](https://github.com/Neovici/cosmoz-slider/commit/d334273c40a93ce5f4df609c11080bbf60a973eb))
+
 ## [4.5.0](https://github.com/Neovici/cosmoz-slider/compare/v4.4.1...v4.5.0) (2023-12-10)
 
 
