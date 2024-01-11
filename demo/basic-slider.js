@@ -1,4 +1,4 @@
-import { component, html, useState } from 'haunted';
+import { component, html, useState } from '@pionjs/pion';
 import { slideInRight } from '../src';
 
 const randValue = () => Math.trunc(Math.random() * 256),

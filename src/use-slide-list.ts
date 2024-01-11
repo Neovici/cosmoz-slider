@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'haunted';
+import { useCallback, useEffect, useMemo, useRef, useState } from '@pionjs/pion';
 import { nothing, TemplateResult } from 'lit-html';
 import { slideInRight, slideInLeft } from './animations';
 import { SlideRef } from './use-slider';
