@@ -1,3 +1,10 @@
+## [5.1.0](https://github.com/Neovici/cosmoz-slider/compare/v5.0.0...v5.1.0) (2024-01-11)
+
+
+### Features
+
+* update exported type def ([2bbc710](https://github.com/Neovici/cosmoz-slider/commit/2bbc710b2814cbc86c1e499d45a867159082ab90))
+
 ## [5.0.0](https://github.com/Neovici/cosmoz-slider/compare/v4.5.0...v5.0.0) (2024-01-11)
 
 
