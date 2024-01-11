@@ -1,4 +1,4 @@
-import { component, html, useState } from 'haunted';
+import { component, html, useState } from '@pionjs/pion';
 import { useSlideList } from '../src';
 import { guard } from 'lit-html/directives/guard.js';
 import { until } from 'lit-html/directives/until.js';

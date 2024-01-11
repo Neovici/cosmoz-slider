@@ -1,4 +1,4 @@
-import { component, html, useState } from 'haunted';
+import { component, html, useState } from '@pionjs/pion';
 import { slideInLeft, slideInRight } from '../src';
 
 const tabs = {

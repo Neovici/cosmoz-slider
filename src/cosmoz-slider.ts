@@ -1,4 +1,4 @@
-import { component } from 'haunted';
+import { component } from '@pionjs/pion';
 import { Slide, renderSlider, useSlider } from './use-slider';
 
 const Slider = <T extends HTMLElement & { slide: Slide }>(host: T) =>

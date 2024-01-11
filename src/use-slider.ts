@@ -1,4 +1,4 @@
-import { html, useEffect, useLayoutEffect, useState } from 'haunted';
+import { html, useEffect, useLayoutEffect, useState } from '@pionjs/pion';
 import { TemplateResult } from 'lit-html';
 import { repeat } from 'lit-html/directives/repeat.js';
 import { ref } from 'lit-html/directives/ref.js';
