@@ -7,10 +7,9 @@
 		"strict": true,
 		"target": "esnext",
 		"allowJs": true,
+		"types": ["node", "mocha"],
 		"paths": {
-				"@neovici/cosmoz-utils/*": [
-					"./node_modules/@neovici/cosmoz-utils/dist/*"
-				]
-			}
+			"@neovici/cosmoz-utils/*": ["./node_modules/@neovici/cosmoz-utils/dist/*"]
+		}
 	}
 }
