@@ -1,3 +1,15 @@
+## [5.2.0](https://github.com/Neovici/cosmoz-slider/compare/v5.1.0...v5.2.0) (2024-06-03)
+
+
+### Features
+
+* add `preview` github workflow ([d4e9c23](https://github.com/Neovici/cosmoz-slider/commit/d4e9c23a9c08828522c576c64dfcf669b2d9a3fd))
+* add autodocs to storybook ([4e5ae1d](https://github.com/Neovici/cosmoz-slider/commit/4e5ae1da3fd10459468e374b3079b14a24a0db36))
+* add missing packages for storybook to work ([ff26484](https://github.com/Neovici/cosmoz-slider/commit/ff2648430415412a353b419a4d38a46a84a92ef7))
+* make storybook 7 work ([4e98fae](https://github.com/Neovici/cosmoz-slider/commit/4e98fae9b15a455823ff697c320edaf318a654e4))
+* small update to .stories.js file ([178c6ea](https://github.com/Neovici/cosmoz-slider/commit/178c6ea45ee68e64444b49b180ff646743aa54f8))
+* update dependencies ([9b87e21](https://github.com/Neovici/cosmoz-slider/commit/9b87e21ad07d9f9619a09056fdcb067c1cd86e14))
+
 ## [5.1.0](https://github.com/Neovici/cosmoz-slider/compare/v5.0.0...v5.1.0) (2024-01-11)
 
 
