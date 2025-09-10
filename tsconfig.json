@@ -11,5 +11,6 @@
 		"paths": {
 			"@neovici/cosmoz-utils/*": ["./node_modules/@neovici/cosmoz-utils/dist/*"]
 		}
-	}
+	},
+	"exclude": ["storybook-static", "node_modules"]
 }
