@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/Neovici/cosmoz-slider/compare/v5.2.0...v5.2.1) (2025-09-10)
+
+
+### Bug Fixes
+
+* typescript configuration ([2f919ff](https://github.com/Neovici/cosmoz-slider/commit/2f919fffbb09acf886ad031b52a00cfc1af82494))
+
 ## [5.2.0](https://github.com/Neovici/cosmoz-slider/compare/v5.1.0...v5.2.0) (2024-06-03)
 
 
