@@ -5,7 +5,7 @@ import { SlideRef } from './use-slider';
 
 const useLastValue = <T>(value: T) => {
 		const lastValue = useRef<T | undefined>(undefined);
-		// eslint-disable-next-line no-return-assign, no-void
+		// eslint-disable-next-line no-void
 		useEffect(() => void (lastValue.current = value), [value]);
 		return lastValue.current;
 	},
