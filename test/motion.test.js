@@ -17,9 +17,9 @@ const switchSlide = async (style = '') => {
 describe('motion', () => {
 	afterEach(() => emulateMedia({ reducedMotion: 'no-preference' }));
 
-	it('slides for --cz-duration-normal with --cz-ease-in-out', async () => {
+	it('slides for --cz-duration-fast with --cz-ease-in-out', async () => {
 		const el = await switchSlide(
-				'--cz-duration-normal: 0.4s; --cz-ease-in-out: linear',
+				'--cz-duration-fast: 0.4s; --cz-ease-in-out: linear',
 			),
 			[animation] = el.lastElementChild.getAnimations(),
 			timing = animation.effect.getTiming();

@@ -2,7 +2,7 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 
 const timing = (el: HTMLElement) => {
 	const style = getComputedStyle(el),
-		duration = style.getPropertyValue('--cz-duration-normal').trim(),
+		duration = style.getPropertyValue('--cz-duration-fast').trim(),
 		easing = style.getPropertyValue('--cz-ease-in-out').trim();
 	return {
 		duration: duration
