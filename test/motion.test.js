@@ -33,6 +33,21 @@ describe('motion', () => {
 		expect(animation.effect.getTiming().duration).to.equal(200);
 	});
 
+	it('animates only transform, so the slide can run on the compositor', async () => {
+		const el = await switchSlide(),
+			[outEl, inEl] = el.children,
+			props = [inEl, outEl].flatMap((e) =>
+				e
+					.getAnimations()
+					.flatMap((a) =>
+						a.effect.getKeyframes().flatMap((k) => Object.keys(k)),
+					),
+			);
+		expect(props).to.include('transform');
+		expect(props).not.to.include('position');
+		expect(outEl.style.position).to.equal('absolute');
+	});
+
 	it('swaps at once under reduced motion', async () => {
 		await emulateMedia({ reducedMotion: 'reduce' });
 		const el = await switchSlide();

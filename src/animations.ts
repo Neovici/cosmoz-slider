@@ -15,20 +15,23 @@ const timing = (el: HTMLElement) => {
 const slide =
 	(from: string, to: string) => (inEl: HTMLElement, outEl: HTMLElement) => {
 		if (reduced.matches) return Promise.resolve();
+		// Only transform animates, so the slide stays on the compositor while the
+		// incoming slide renders. The outgoing slide leaves the flow inline instead.
 		const options = { ...timing(inEl), fill: 'none' } as const,
-			inAnimation = inEl.animate(
-				[
-					{ position: 'absolute', transform: `translateX(${from})` },
-					{ transform: 'translateX(0%)' },
-				],
+			{ position, inset } = outEl.style;
+		Object.assign(outEl.style, { position: 'absolute', inset: '0' });
+		const inAnimation = inEl.animate(
+				[{ transform: `translateX(${from})` }, { transform: 'translateX(0%)' }],
 				options,
 			),
 			outAnimation = outEl.animate(
-				[{}, { position: 'absolute', transform: `translateX(${to})` }],
+				[{ transform: 'translateX(0%)' }, { transform: `translateX(${to})` }],
 				options,
 			);
 
-		return Promise.all([inAnimation.finished, outAnimation.finished]);
+		return Promise.all([inAnimation.finished, outAnimation.finished]).finally(
+			() => Object.assign(outEl.style, { position, inset }),
+		);
 	};
 
 export const slideInRight = slide('100%', '-100%');
